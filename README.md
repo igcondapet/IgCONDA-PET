@@ -1,5 +1,4 @@
-# IgCONDA-PET: Implicitly-Guided Counterfactual Diffusion for Detecting Anomalies in PET Images
-# <span style="color:blue">This is</span> a <span style="color:red">GitHub Markdown</span> file
+# **IgCONDA-PET**: **I**mplicitly-**g**uided **CO**u**N**terfactual Diffusion for **D**etecting **A**nomalies in **PET** Images
 
 
 ## Introduction
