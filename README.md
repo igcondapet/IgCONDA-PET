@@ -4,7 +4,7 @@
 ## Introduction
 
 <p align="center">
-  <img src="./assets/method_scheme.png" alt="Figure" height="600" />
+  <img src="./assets/method_scheme.png" alt="Figure" height="300" />
   <br>
   <em>
   <strong>
