@@ -37,6 +37,47 @@ Follow the intructions given below to set up the necessary conda environment, in
     ```
     conda activate igcondapet
     ```
+- **Preprocess AutoPET and HECKTOR datasets:**
+    Go to [config.py](config.py) and set path to data folders for AutoPET and HECKTOR datasets and the path where you want the preprocessed data to be stored. 
+    ```
+    path_to_autopet_data_dir = '' # path to AutoPET data
+    path_to_hecktor_data_dir = '' # path to hecktor data 
+    path_to_preprocessed_data_dir = '' # path to directory where you want to store your preprocessed data
+    ```
+    The directory structure within `path_to_autopet_data_dir` and `path_to_hecktor_data_dir` should look shown below. The folders `images` and `labels` must contain all the 3D PET and ground truth images for each datasets in `.nii.gz` format. Notice, the PET images filenames (excluding `.nii.gz` extension) end with `_0001` for AutoPET data, and with `__PT` for HECKTOR data. Ensure that your files are renamed in this format before proceeding. The information about the images included in the training, validation and test phases in this work have been shown in [data_split/metadata3D.csv](data_split/metadata3D.csv). Your filenames for PET and ground truth should be exactly like the filenames in the columns `PTPATH` and `GTPATH` in this file. 
+
+    └───path_to_autopet_data_dir/
+        ├── images
+        │   ├── Patient0001_0001.nii.gz
+        │   ├── Patient0002_0001.nii.gz
+        │   ├── ...
+        ├── labels
+        │   ├── Patient0001.nii.gz
+        │   ├── Patient0002.nii.gz 
+        │   ├── ...
+
+    └───path_to_hecktor_data_dir/
+        ├── images
+        │   ├── Patient0261__PT.nii.gz
+        │   ├── Patient0262__PT.nii.gz
+        │   ├── ...
+        ├── labels
+        │   ├── Patient0261.nii.gz
+        │   ├── Patient0262.nii.gz 
+        │   ├── ...
+
+    This step centrally crops and downsamples the images (from both the datasets) to `64 x 64 x 96` and then saves the individual axial slices (96 slices per image) to your local device. The downsampled 3D images and 2D images are stored under `path_to_preprocessed_data_dir/preprocessed3D` and  `path_to_preprocessed_data_dir/preprocessed2D`, respectively. If your data is stored exactly as shown in the schematic above, run the data preprocessing step using [preprocess_data/preprocess_data.py](preprocess_data/preprocess_data.py)
+    ```
+    cd preprocess_data
+    python preprocess_data.py
+    ```
+
+
+- **Run training script**
+    
+- **Run evaluation on test set**  
+
+
 
 
 # References
