@@ -33,7 +33,7 @@ Follow the intructions given below to set up the necessary conda environment, in
     cd IgCONDA-PET
     conda env create --file requirements.yaml
     ```
-    The last step above creates a conda environment named `igcondapet`. Make sure you have conda installed. Next activate the conda environment using
+    The last step above creates a conda environment named `igcondapet`. Make sure you have conda installed. Next, activate the conda environment
     ```
     conda activate igcondapet
     ```
