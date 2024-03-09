@@ -28,8 +28,7 @@ Minimizing the need for pixel-level annotated data for training PET anomaly segm
 ## How to get started?
 Follow the intructions given below to set up the necessary conda environment, install packages, preprocess dataset in the correct format so it can be accepted as inputs by the code, train model and perform anomaly detection on test set using the trained models. 
 
-- **Clone the repository, create conda environment and install necessary packages:**  
-    The first step is to clone this GitHub codebase in your local machine, create a conda environment, and install all the necessary packages. This code base was developed primarily using python=3.8.10, PyTorch=1.11.0, monai=1.3.0, with CUDA 11.3 on an Ubuntu 20.04 virtual machine, so the codebase has been tested only with these configurations. We hope that it will run in other suitable combinations of different versions of python, PyTorch, monai, and CUDA, but we cannot guarantee that. Proceed with caution!
+- **Clone the repository, create conda environment and install necessary packages:** The first step is to clone this GitHub codebase in your local machine, create a conda environment, and install all the necessary packages. This code base was developed primarily using python=3.8.10, PyTorch=1.11.0, monai=1.3.0, with CUDA 11.3 on an Ubuntu 20.04 virtual machine, so the codebase has been tested only with these configurations. We hope that it will run in other suitable combinations of different versions of python, PyTorch, monai, and CUDA, but we cannot guarantee that. Proceed with caution!
     ```
     git clone 'https://github.com/igcondapet/IgCONDA-PET.git'
     cd IgCONDA-PET
@@ -40,8 +39,7 @@ Follow the intructions given below to set up the necessary conda environment, in
     conda activate igcondapet
     ```
 
-- **Preprocess AutoPET and HECKTOR datasets:**
-    Go to [config.py](config.py) and set path to data folders for AutoPET and HECKTOR datasets and the path where you want the preprocessed data to be stored. 
+- **Preprocess AutoPET and HECKTOR datasets:** Go to [config.py](config.py) and set path to data folders for AutoPET and HECKTOR datasets and the path where you want the preprocessed data to be stored. 
     ```
     path_to_autopet_data_dir = '' # path to AutoPET data
     path_to_hecktor_data_dir = '' # path to hecktor data 
@@ -75,21 +73,20 @@ Follow the intructions given below to set up the necessary conda environment, in
     python preprocess_data.py
     ```
 
-- **Run training script**
-    The file [igcondapet/trainddp.py](igcondapet/trainddp.py) runs training on the 2D dataset via PyTorch's `DistributedDataParallel`. To run training, do the following (an example bash script is given in [igcondapet/trainddp.sh](igcondapet/trainddp.sh)):
+- **Run training:** The file [igcondapet/trainddp.py](igcondapet/trainddp.py) runs training on the 2D dataset via PyTorch's `DistributedDataParallel`. To run training, do the following (an example bash script is given in [igcondapet/trainddp.sh](igcondapet/trainddp.sh)):
     ```
     cd igcondapet
     torchrun --standalone --nproc_per_node=1 trainddp.py --experiment='exp0' --attn-layer1=False --attn-layer2=True --attn-layer3=True --epochs=400 --batch-size=32 --num-workers=4 --cache-rate=1.0 --val-interval=10
     ```
     Use a unique `--experiment` flag everytime you run a new training. Set `--nproc_per_node` as the number of GPU nodes available for parallel training. The data is cached using MONAI's `CacheDataset`, so if you are running out of memory, consider lowering the value of `cache_rate`. During training, the training and validation losses are saved under `./results/logs/trainlog_gpu{rank}.csv` and `./results/logs/validlog_gpu{rank}.csv` where `{rank}` is the GPU rank and updated every epoch. The checkpoints are saved every `val_interval` epochs under `./results/models/checkpoint_ep{epoch_number}.pth`.
 
-- **Run evaluation on test set**  
-    After the training is completed (for a given `--experiment`), [igcondapet/inference.py](igcondapet/inference.py) can be used to run evaluation on the unhealthy 2D test dataset and save the results. To run test evaluation, do the following (an example bash script is given in [igcondapet/inference.py](igcondapet/inference.py)):
+- **Run evaluation on test set:** After the training is finished (for a given `--experiment`), [igcondapet/inference.py](igcondapet/inference.py) can be used to run evaluation on the unhealthy 2D test dataset and save the results. To run test evaluation, do the following (an example bash script is given in [igcondapet/inference.py](igcondapet/inference.py)):
     ```
     cd igcondapet
     python inference.py --experiment='exp0' --attn-layer1=False --attn-layer2=True --attn-layer3=True --guidance-scale=3.0 --noise-level=400 --num-workers=4 --cache-rate=1.0 --val-interval=10
     ```
     [igcondapet/inference.py](igcondapet/inference.py) uses the model with the lowest loss on the validation set for test evaluation. CAUTION: set `--val-interval` to the same value that was used during training.  
+
 
 
 # References
