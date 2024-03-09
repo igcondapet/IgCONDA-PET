@@ -8,7 +8,6 @@ This codebase is related to our submission to MICCAI 2024:<br>
 <p align="justify">
 Minimizing the need for pixel-level annotated data for training PET anomaly segmentation networks is crucial, particularly due to time and cost constraints related to expert annotations. Current un-/weakly-supervised anomaly detection methods rely on autoencoder or generative adversarial networks trained only on healthy data, although these are more challenging to train. In this work, we present a weakly-supervised and <b>I</b>mplicitly <b>g</b>uided <b>CO</b>u<b>N</b>terfactual diffusion model for <b>D</b>etecting <b>A</b>nomalies in <b>PET</b> images, branded as <b>IgCONDA-PET</b>. The training is conditioned on image class labels (healthy vs. unhealthy) along with implicit guidance [3] to generate counterfactuals for an unhealthy image with anomalies. The counterfactual generation [4] process synthesizes the healthy counterpart for a given unhealthy image, and the difference between the two facilitates the identification of anomaly locations. In this work, we use two publicly available oncological FDG PET datasets, AutoPET [1] and HECKTOR [2].
 </p>
-<span style="color:blue">some *blue* text</span>.
 
 <p align="center">
 <img src="./assets/method_scheme.png" alt="Figure" height="290" />
