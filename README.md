@@ -10,7 +10,7 @@ Minimizing the need for pixel-level annotated data for training PET anomaly segm
 </p>
 
 <p align="center">
-<img src="./assets/method_scheme.png" alt="Figure" height="250" />
+<img src="./assets/method_scheme.png" alt="Figure" height="290" />
 </p>
 <p align="justify">
     Figure 1: IgCONDA-PET: Implicitly-guided counterfactual DPM sampling methodology for domain translation between an unhealthy image and its healthy counterfactual for PET. The anomaly map is defined as the absolute difference between the unhealthy and corresponding reconstructed healthy image.
@@ -92,11 +92,11 @@ Follow the intructions given below to set up the necessary conda environment, in
 # References
 
 <a id="1">[1]</a> 
-Gatidis, S., Kuestner, T., "A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions)" [Dataset] (2022), The Cancer Imaging Archive. 
+Gatidis, S., Kuestner, T.: "A whole-body FDG-PET/CT dataset with manually annotated tumor lesions (FDG-PET-CT-Lesions)" [Dataset] (2022), The Cancer Imaging Archive. 
 [![DOI](./assets/autopet_data_zenodo.svg)](https://doi.org/10.7937/gkr0-xv29)
 
 <a id="2">[2]</a> 
-Andrearczyk, V., Oreiller, V., Boughdad, S., Rest, C.C.L., Elhalawani, H., Jreige, M., Prior, J.O., Valli`eres, M., Visvikis, D., Hatt, M., et al., "Overview of the hecktor challenge at miccai 2021: automatic head and neck tumor segmentation and outcome prediction in pet/ct images", In: 3D head and neck tumor segmentation in PET/CT challenge, pp. 1–37. Springer (2021). 
+Andrearczyk, V., Oreiller, V., Boughdad, S., Rest, C.C.L., Elhalawani, H., Jreige, M., Prior, J.O., Valli`eres, M., Visvikis, D., Hatt, M., et al.: "Overview of the hecktor challenge at miccai 2021: automatic head and neck tumor segmentation and outcome prediction in pet/ct images", In: 3D head and neck tumor segmentation in PET/CT challenge, pp. 1–37. Springer (2021). 
 [(doi)](https://doi.org/10.1007/978-3-030-98253-9_1)
 
 <a id="3">[3]</a> 
