@@ -18,7 +18,7 @@ from joblib import Parallel, delayed
 WORKING_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 sys.path.append(WORKING_DIR)
 from utils.utils import str2bool, convert_to_N_digits, save_image
-from get_datasets import get_test_unhealthy_datalist, get_transforms, get_test_datalist_trial
+from get_datasets import get_test_unhealthy_datalist, get_transforms
 # %%
 set_determinism(42)
 #%%
@@ -163,7 +163,7 @@ def main(args):
     embed.load_state_dict(best_checkpoint['embed_state_dict'])
     scheduler.load_state_dict(best_checkpoint['scheduler_state_dict'])
 
-    datalist, data_transforms = get_test_datalist_trial(), get_transforms()
+    datalist, data_transforms = get_test_unhealthy_datalist(), get_transforms()
 
     dataset = CacheDataset(datalist, transform=data_transforms, cache_rate=args.cache_rate)
     dataloader = DataLoader(dataset, batch_size=1, shuffle=False, num_workers=args.num_workers, drop_last=False, persistent_workers=True)

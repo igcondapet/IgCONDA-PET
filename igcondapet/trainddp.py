@@ -17,7 +17,7 @@ from generative.inferers import DiffusionInferer
 from torch.utils.data.distributed import DistributedSampler
 from torch.nn.parallel import DistributedDataParallel as DDP
 import torch.distributed as dist 
-from get_datasets import get_train_valid_datalist, get_transforms, get_train_valid_datalist_trial
+from get_datasets import get_train_valid_datalist, get_transforms
 from utils.utils import str2bool, convert_to_N_digits
 torch.multiprocessing.set_sharing_strategy("file_system")
 from monai.data import DataLoader, CacheDataset
@@ -42,7 +42,7 @@ def main_worker(models_dir, logs_dir, args):
         print(f"The models will be saved in {models_dir}")
         print(f"The training/validation logs will be saved in {logs_dir}")
 
-    datalist_train, datalist_valid = get_train_valid_datalist_trial()
+    datalist_train, datalist_valid = get_train_valid_datalist()
     data_transforms = get_transforms()
     dataset_train = prepare_dataset(datalist_train, data_transforms, args)
     dataset_valid = prepare_dataset(datalist_valid, data_transforms, args)

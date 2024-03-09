@@ -1,1 +1,1 @@
-torchrun --standalone --nproc_per_node=1 trainddp.py --experiment='exp1' --attn-layer1=False --attn-layer2=True --attn-layer3=True --epochs=50 --batch-size=64 --num-workers=4 --cache-rate=1.0 --val-interval=10
+torchrun --standalone --nproc_per_node=1 trainddp.py --experiment='exp0' --attn-layer1=False --attn-layer2=True --attn-layer3=True --epochs=400 --batch-size=64 --num-workers=4 --cache-rate=1.0 --val-interval=10

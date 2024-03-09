@@ -55,7 +55,7 @@ for index, row in df3D.iterrows():
     ptpaths3D.append(ptpath)
     gtpaths3D.append(gtpath)
 
-datalist3D = get_dict_datalist(ptpaths3D[0:20], gtpaths3D[0:20])
+datalist3D = get_dict_datalist(ptpaths3D, gtpaths3D)
 #%%
 mod_keys = ['PT', 'GT'] 
 autopet_spacing = (2.0364201068878174, 2.0364201068878174, 3.0)
