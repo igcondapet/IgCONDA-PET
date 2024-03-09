@@ -1,4 +1,4 @@
-# **IgCONDA-PET**: **I**mplicitly-**g**uided **CO**u**N**terfactual Diffusion for **D**etecting **A**nomalies in **PET** Images
+# IgCONDA-PET: Implicitly-guided Counterfactual Diffusion for Detecting Anomalies in PET Images
 
 
 ## Introduction
