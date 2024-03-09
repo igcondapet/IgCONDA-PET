@@ -25,7 +25,6 @@ Minimizing the need for pixel-level annotated data for training PET anomaly segm
 
 
 
-
 ## How to get started?
 Follow the intructions given below to set up the necessary conda environment, install packages, preprocess dataset in the correct format so it can be accepted as inputs by the code, train model and perform anomaly detection on test set using the trained models. 
 
@@ -81,7 +80,6 @@ Follow the intructions given below to set up the necessary conda environment, in
     ```
     cd igcondapet
     torchrun --standalone --nproc_per_node=1 trainddp.py --experiment='exp0' --attn-layer1=False --attn-layer2=True --attn-layer3=True --epochs=400 --batch-size=32 --num-workers=4 --cache-rate=1.0 --val-interval=10
-
     ```
     Use a unique `--experiment` flag everytime you run a new training. Set `--nproc_per_node` as the number of GPU nodes available for parallel training. The data is cached using MONAI's `CacheDataset`, so if you are running out of memory, consider lowering the value of `cache_rate`. During training, the training and validation losses are saved under `./results/logs/trainlog_gpu{rank}.csv` and `./results/logs/validlog_gpu{rank}.csv` where `{rank}` is the GPU rank and updated every epoch. The checkpoints are saved every `val_interval` epochs under `./results/models/checkpoint_ep{epoch_number}.pth`.
 
@@ -90,7 +88,6 @@ Follow the intructions given below to set up the necessary conda environment, in
     ```
     cd igcondapet
     python inference.py --experiment='exp0' --attn-layer1=False --attn-layer2=True --attn-layer3=True --guidance-scale=3.0 --noise-level=400 --num-workers=4 --cache-rate=1.0 --val-interval=10
-
     ```
     [igcondapet/inference.py](igcondapet/inference.py) uses the model with the lowest loss on the validation set for test evaluation. CAUTION: set `--val-interval` to the same value that was used during training.  
 
